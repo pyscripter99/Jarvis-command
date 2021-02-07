@@ -1,4 +1,5 @@
 import os
+import Jarvis_connect
 modules = {}
 f = open(input()).readlines()
 def run(txtin):
@@ -22,5 +23,11 @@ def run(txtin):
 		g = modules[args[0]].readlines()
 		for y in g:
 			run(y)
+	if command == "connect":
+		file_ = open("Jarvis_connect.py", "a")
+		file_.write('\n' + "	if package_name == " + '"' + args[0] + '"' + ":" + "	" + '\n' + "		import " + args[0] + '\n' + "		" + args[0] + ".run()")
+		file_.close()
+	if command == "python":
+		Jarvis_connect.RunPy(args[0])
 for t in f:
 	run(t)
